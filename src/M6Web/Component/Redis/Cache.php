@@ -60,7 +60,7 @@ class Cache extends Manager
      */
     public function setNamespace($v)
     {
-        $this->namespace =  str_replace(array('\\', '?', '*', '[', ']', ':'), '', (string) $v).'/';
+        $this->namespace =  str_replace(array('\\', '?', '*', '[', ']', ':'), '', (string) $v).':';
     }
 
     /**
