@@ -108,7 +108,7 @@ class PredisProxy extends atoum\test
          ]);
  
         // timeout to 10 seconds
-        $predisClient = new Predis\Client();
+        $predisClient = new Predis\Client(['host' => 'localhost']);
         $response = $predisClient->executeRaw(array('config', 'set', 'timeout', '10'));
         
         $this->assert
@@ -141,7 +141,7 @@ class PredisProxy extends atoum\test
          ]);
  
         // timeout to 10 seconds
-        $predisClient = new Predis\Client();
+        $predisClient = new Predis\Client(['host' => 'localhost']);
         $response = $predisClient->executeRaw(array('config', 'set', 'timeout', '10'));
         
         $this->assert->object($redis->set('foo', 'raoul'));
