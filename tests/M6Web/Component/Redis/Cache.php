@@ -89,8 +89,7 @@ class Cache extends atoum\test
             'timeout' => self::TIMEOUT,
             'server_config' => $server_config,
             'namespace' => self::SPACENAME
-            ),
-             true
+            )
         );
 
         $this->assert
@@ -120,8 +119,7 @@ class Cache extends atoum\test
             'timeout' => self::TIMEOUT,
             'server_config' => $server_config,
             'namespace' => self::SPACENAME
-            ),
-             true
+            )
         );
         // setting value
         $this->assert
@@ -136,8 +134,7 @@ class Cache extends atoum\test
             'compress' => true,
             'server_config' => $server_config,
             'namespace' => self::SPACENAME
-            ),
-             true
+            )
         );
         // setting value
         $this->assert
