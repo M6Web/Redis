@@ -10,6 +10,6 @@ class Crc32 extends HashKey
 {
     protected function createHashKey()
     {
-        return new \M6Web\Component\Redis\HashKey\Crc32();
+        return new \M6Web\Component\Redis\HashFunction\Crc32();
     }
 }

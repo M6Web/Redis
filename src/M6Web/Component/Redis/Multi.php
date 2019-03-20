@@ -20,8 +20,8 @@ class Multi extends Manager
     /**
      * constructor
      *
-     * @param array            $params
-     * @param HashKeyInterface $hashAlgorithm Strategy for consistent hashing
+     * @param array                 $params
+     * @param HashFunctionInterface $hashAlgorithm Strategy for consistent hashing
      *
      * @throws Exception
      */

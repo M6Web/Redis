@@ -40,8 +40,8 @@ class Cache extends Manager
 
     /**
      * class constructor
-     * @param array $params Manager parameters
-     * @param HashKeyInterface $hashAlgorithm Strategy for consistent hashing
+     * @param array                 $params Manager parameters
+     * @param HashFunctionInterface $hashAlgorithm Strategy for consistent hashing
      *
      * @throws Exception
      */

@@ -10,7 +10,7 @@ class Sha1 extends HashKey
 {
     protected function createHashKey()
     {
-        return new \M6Web\Component\Redis\HashKey\Sha1();
+        return new \M6Web\Component\Redis\HashFunction\Sha1();
     }
 
 }

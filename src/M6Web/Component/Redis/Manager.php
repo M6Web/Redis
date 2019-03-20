@@ -71,7 +71,7 @@ abstract class Manager
     protected $eventClass = null;
 
     /**
-     * @var HashKeyInterface
+     * @var HashFunctionInterface
      */
     protected $hashAlgorithm = null;
 
@@ -99,14 +99,14 @@ abstract class Manager
      *       'port' => 6379,
      *       ));
      *
-     * @param array            $params Manager params
-     * @param HashKeyInterface $hashAlgorithm Strategy for consistent hashing
+     * @param array                 $params Manager params
+     * @param HashFunctionInterface $hashAlgorithm Strategy for consistent hashing
      *
      * @return \M6Web\Component\Redis\Manager
      */
     public function __construct($params, $hashAlgorithm = null)
     {
-        $this->hashAlgorithm = $hashAlgorithm !== null ? $hashAlgorithm : new HashKey\Crc32();
+        $this->hashAlgorithm = $hashAlgorithm !== null ? $hashAlgorithm : new HashFunction\Crc32();
         $this->init($params);
 
         return $this;
