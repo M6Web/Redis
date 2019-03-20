@@ -2,7 +2,7 @@
 
 namespace M6Web\Component\Redis;
 
-interface HashKeyInterface
+interface HashFunctionInterface
 {
     /**
      * @param string $key Input key to hash.

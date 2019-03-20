@@ -2,7 +2,7 @@
 
 namespace M6Web\Component\Redis\tests\units;
 
-use M6Web\Component\Redis\HashKeyInterface;
+use M6Web\Component\Redis\HashFunctionInterface;
 use \mageekguy\atoum;
 
 /**
@@ -13,7 +13,7 @@ abstract class HashKey extends atoum\test
     const ALPHABET = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
     /**
-     * @return HashKeyInterface
+     * @return HashFunctionInterface
      */
     abstract protected function createHashKey();
 
