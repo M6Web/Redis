@@ -40,17 +40,18 @@ class Cache extends Manager
 
     /**
      * class constructor
-     * @param array $params Manager parameters
+     * @param array                 $params Manager parameters
+     * @param HashFunctionInterface $hashAlgorithm Strategy for consistent hashing
      *
      * @throws Exception
      */
-    public function __construct($params)
+    public function __construct($params, $hashAlgorithm = null)
     {
         if (!isset($params['namespace'])) {
             throw new Exception("Le parametre namespace est obligatoire");
         }
         $this->setNamespace($params['namespace']);
-        parent::__construct($params);
+        parent::__construct($params, $hashAlgorithm);
         $this->currentDb = self::CACHE;
     }
 

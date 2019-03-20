@@ -71,6 +71,11 @@ abstract class Manager
     protected $eventClass = null;
 
     /**
+     * @var HashFunctionInterface
+     */
+    protected $hashAlgorithm = null;
+
+    /**
      * number of reconnect if a command fail (passed to predisProxy)
      * @var int
      */
@@ -94,12 +99,14 @@ abstract class Manager
      *       'port' => 6379,
      *       ));
      *
-     * @param array $params Manager params
+     * @param array                 $params Manager params
+     * @param HashFunctionInterface $hashAlgorithm Strategy for consistent hashing
      *
      * @return \M6Web\Component\Redis\Manager
      */
-    public function __construct($params)
+    public function __construct($params, $hashAlgorithm = null)
     {
+        $this->hashAlgorithm = $hashAlgorithm !== null ? $hashAlgorithm : new HashFunction\Crc32();
         $this->init($params);
 
         return $this;
@@ -334,7 +341,7 @@ abstract class Manager
         }
         $serverKeys = array_keys($servers);
 
-        return $serverKeys[(int) (crc32($key) % count($serverKeys))];
+        return $serverKeys[$this->hashAlgorithm->hash($key, count($serverKeys))];
     }
 
     /**

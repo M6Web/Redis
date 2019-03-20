@@ -20,11 +20,12 @@ class Multi extends Manager
     /**
      * constructor
      *
-     * @param array $params
+     * @param array                 $params
+     * @param HashFunctionInterface $hashAlgorithm Strategy for consistent hashing
      *
      * @throws Exception
      */
-    public function __construct($params)
+    public function __construct($params, $hashAlgorithm = null)
     {
         $this->setCurrentDb(1); // default hardcoded choice for the db
         if (isset($params['compress']) and ($params['compress'] === true)) {
@@ -34,7 +35,7 @@ class Multi extends Manager
             throw new Exception("cant use the namespace option in this class");
         }
 
-        return parent::__construct($params);
+        return parent::__construct($params, $hashAlgorithm);
     }
 
 
