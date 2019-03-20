@@ -6,27 +6,27 @@ use M6Web\Component\Redis\HashFunctionInterface;
 use \mageekguy\atoum;
 
 /**
- * Generic tests for classes implementing HashKeyInterface
+ * Generic tests for classes implementing HashFunctionInterface
  */
-abstract class HashKey extends atoum\test
+abstract class HashFunction extends atoum\test
 {
     const ALPHABET = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
     /**
      * @return HashFunctionInterface
      */
-    abstract protected function createHashKey();
+    abstract protected function createHashFunction();
 
     public function testReturnedValuesAreCorrectlyBounded()
     {
-        $hashKey = $this->createHashKey();
+        $hashFunction = $this->createHashFunction();
         $remainingAttempt = 100;
 
         while ($remainingAttempt-- > 0) {
             $key = str_shuffle(self::ALPHABET);
             $upperBound = rand(1, 10);
             $this
-                ->integer($hashKey->hash($key, $upperBound))
+                ->integer($hashFunction->hash($key, $upperBound))
                     ->isGreaterThanOrEqualTo(0)
                     ->isLessThan($upperBound)
             ;
@@ -35,14 +35,14 @@ abstract class HashKey extends atoum\test
 
     public function testValuesAreDistributedInRange()
     {
-        $hashKey = $this->createHashKey();
+        $hashFunction = $this->createHashFunction();
         $remainingAttempt = 100;
         $nbKeys = 5;
         $collector = array_fill(0, $nbKeys, 0);
 
         while ($remainingAttempt-- > 0) {
             $key = str_shuffle(self::ALPHABET);
-            $collector[$hashKey->hash($key, $nbKeys)]++;
+            $collector[$hashFunction->hash($key, $nbKeys)]++;
         }
 
         // Ideally, we should have 100/5 = 20 hits for each values.

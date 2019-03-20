@@ -60,7 +60,7 @@ $redis-decr('compteur');
 
 Check unit test for more informations.
 
-You can implement your own consistent hashing using `HashKeyInterface` or use provided ones: `Crc32` (default), `Sha1`.
+You can implement your own consistent hashing using `HashFunctionInterface` or use provided ones: `Crc32` (default), `Sha1`.
 
 ### db mode
 
